@@ -1,0 +1,24 @@
+{
+	"format_version": 1,
+	"imports": [{
+		"target_table": "CrossUserCheck.CrossUserCheck",
+		"source_data": {
+			"data_type": "CSV",
+			"file_name": "CrossUserCheck.csv",
+			"has_header": false,
+			"dialect": "HANA",
+			"type_config": {
+				"delimiter": ","
+			}
+		},
+		"import_settings": {
+         	"include_filter" : [ ],		
+			"import_columns": ["ID",
+			"NAME"]
+		},
+		"column_mappings": {
+			"ID": 1,
+			"NAME": 2
+		}
+	}]
+}

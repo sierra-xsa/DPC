@@ -1,0 +1,6 @@
+COLUMN TABLE "CrossUserCheck.CrossUserCheck" (
+ "ID" INT,
+	"NAME" VARCHAR(100),
+	"AGE" INT 
+) 
+	 UNLOAD PRIORITY 5 AUTO MERGE 
