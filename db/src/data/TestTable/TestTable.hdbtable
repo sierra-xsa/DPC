@@ -1,0 +1,7 @@
+COLUMN TABLE "TestTable" (
+	 "Column1" NVARCHAR(10) COMMENT 'Column1',
+	 "Column2" NVARCHAR(10) COMMENT 'Column2',
+	 "Column3" NVARCHAR(10) COMMENT 'Column3',
+	 PRIMARY KEY ("Column1")) 
+	 COMMENT 'TestTable'
+	 UNLOAD PRIORITY 5 AUTO MERGE 

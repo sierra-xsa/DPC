@@ -1,0 +1,25 @@
+PROCEDURE "get_TestTable_data"( 
+	out out_TestTable table ( "Column1" NVARCHAR(10),
+                              "Column2" NVARCHAR(10),
+                              "Column3" NVARCHAR(10) )
+	
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+
+ declare lt_TestTable table like :out_TestTable;
+
+   lt_TestTable = select "Column1", "Column2", "Column3" from "TestTable" ;
+   
+ :out_TestTable.INSERT(:lt_TestTable);  
+ :out_TestTable.INSERT(('ProductA', 'Software', '1999.99'), 1);
+ :out_TestTable.INSERT(('ProductB', 'Software', '2999.99'), 2);
+ :out_TestTable.INSERT(('ProductC', 'Software', '3999.99'), 3);   
+   
+END
