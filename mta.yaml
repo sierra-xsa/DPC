@@ -47,6 +47,15 @@ modules:
       - name: hdi_user_db
         properties:
           TARGET_CONTAINER: '~{user-container-name}'
+
+  - name: AngularMod
+    type: nodejs
+    path: AngularMod
+    provides:
+     - name: AngularMod_api
+       properties:
+          url: ${default-url}
+
 resources:
   - name: openSAPHANA-hdi-container
     type: com.sap.xs.hdi-container
