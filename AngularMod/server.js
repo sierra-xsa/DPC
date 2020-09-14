@@ -1,31 +1,33 @@
-/*eslint no-console: 0, no-unused-vars: 0*/
 "use strict";
 
-var xsjs  = require("@sap/xsjs");
-var xsenv = require("@sap/xsenv");
-var port  = process.env.PORT || 3000;
+//var https = require("https");
+//var xsenv = require("@sap/xsenv");
+var port = process.env.PORT || 3000;
+var server = require("http").createServer();
+//https.globalAgent.options.ca = xsenv.loadCertificates();
+global.__base = __dirname + "/";
 
-var options = {
-	anonymous : true, // remove to authenticate calls
-	auditLog : { logToConsole: true }, // change to auditlog service for productive scenarios
-	redirectUrl : "/index.xsjs"
-};
+var express = require("express");
+var app = express();
 
-// configure HANA
-try {
-	options = Object.assign(options, xsenv.getServices({ hana: {tag: "hana"} }));
-} catch (err) {
-	console.log("[WARN]", err.message);
-}
+app.disable('x-powered-by');
 
-// configure UAA
-try {
-	options = Object.assign(options, xsenv.getServices({ uaa: {tag: "xsuaa"} }));
-} catch (err) {
-	console.log("[WARN]", err.message);
-}
+app.options("/*", function(req, res, next){
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.send(200);
+});
 
-// start server
-xsjs(options).listen(port);
+// Point static path to dist
+app.use(express.static(global.__base + 'dist'));
 
-console.log("Server listening on port %d", port);
+// Catch all other routes and return the index file
+app.all('*', (req, res) => {
+  res.sendFile(global.__base + 'dist/index.html');
+});
+
+//Start the Server 
+server.on("request", app);
+server.listen(port, function() {
+	console.info(`HTTP Server: ${server.address().port}`);
+});
