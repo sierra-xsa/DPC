@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Sierra\Angular\openSAPHANA\AngularMod\src\styles.css */"OmL/");
+module.exports = __webpack_require__(/*! D:\Sierra\Angular\GIT\AngularMod\src\styles.css */"OmL/");
 
 
 /***/ }),

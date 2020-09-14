@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Sierra\Angular\openSAPHANA\AngularMod\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! D:\Sierra\Angular\GIT\AngularMod\src\main.ts */"zUnb");
 
 
 /***/ }),
